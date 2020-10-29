@@ -61,18 +61,18 @@ type ExecCredentialStatus struct {
 	// +optional
 	ExpirationTimestamp *metav1.Time `json:"expirationTimestamp,omitempty"`
 	// Token is a bearer token used by the client for request authentication.
-	Token string `json:"token,omitempty"`
+	Token string `json:"token,omitempty" datapolicy:"token"`
 	// PEM-encoded client TLS certificates (including intermediates, if any).
-	ClientCertificateData string `json:"clientCertificateData,omitempty"`
+	ClientCertificateData string `json:"clientCertificateData,omitempty" datapolicy:"security-key"`
 	// PEM-encoded private key for the above certificate.
-	ClientKeyData string `json:"clientKeyData,omitempty"`
+	ClientKeyData string `json:"clientKeyData,omitempty" datapolicy:"security-key"`
 }
 
 // Response defines metadata about a failed request, including HTTP status code and
 // response headers.
 type Response struct {
 	// Header holds HTTP headers returned by the server.
-	Header map[string][]string `json:"header,omitempty"`
+	Header map[string][]string `json:"header,omitempty" datapolicy:"token"`
 	// Code is the HTTP status code returned by the server.
 	Code int32 `json:"code,omitempty"`
 }
